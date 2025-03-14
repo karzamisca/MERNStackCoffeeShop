@@ -1,8 +1,12 @@
-//controllers\homeController.js
-exports.getHome = (req, res) => {
-  res.json([
-    { id: 1, name: "Espresso", price: "$3", image: "/images/espresso.jpg" },
-    { id: 2, name: "Cappuccino", price: "$4", image: "/images/cappuccino.jpg" },
-    { id: 3, name: "Latte", price: "$4.50", image: "/images/latte.jpg" },
-  ]);
+// controllers/homeController.js
+const Product = require("../models/Product");
+
+exports.getHome = async (req, res) => {
+  try {
+    const products = await Product.find({});
+    res.json(products);
+  } catch (err) {
+    console.error("Error fetching products:", err.message);
+    res.status(500).json({ error: "Server error" });
+  }
 };
