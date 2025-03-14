@@ -1,13 +1,10 @@
 //views\src\pages\Contact.jsx
-import { useEffect, useState } from "react";
-import axios from "axios";
-
 function Contact() {
-  const [contact, setContact] = useState({});
-
-  useEffect(() => {
-    axios.get("/api/contact").then((res) => setContact(res.data));
-  }, []);
+  // Directly embed the contact data instead of fetching from API
+  const contact = {
+    phone: "+123456789",
+    email: "contact@kylongcoffee.com",
+  };
 
   return (
     <div>

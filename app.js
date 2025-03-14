@@ -7,8 +7,6 @@ require("dotenv").config();
 
 // Import Routes
 const homeRoutes = require("./routes/homeRoutes");
-const aboutRoutes = require("./routes/aboutRoutes");
-const contactRoutes = require("./routes/contactRoutes");
 
 const app = express();
 
@@ -32,8 +30,6 @@ app.use((req, res, next) => {
 
 // API Routes - these need to come BEFORE the wildcard route
 app.use("/api/home", homeRoutes);
-app.use("/api/about", aboutRoutes);
-app.use("/api/contact", contactRoutes);
 
 // Serve frontend for all other routes - this should come AFTER API routes
 app.use(express.static(path.join(__dirname, "views/build")));

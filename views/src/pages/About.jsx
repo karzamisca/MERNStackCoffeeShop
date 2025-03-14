@@ -1,13 +1,10 @@
 //views\src\pages\About.jsx
-import { useEffect, useState } from "react";
-import axios from "axios";
-
 function About() {
-  const [info, setInfo] = useState({});
-
-  useEffect(() => {
-    axios.get("/api/about").then((res) => setInfo(res.data));
-  }, []);
+  // Directly embed the data instead of fetching from API
+  const info = {
+    name: "Kylong Coffee",
+    description: "The best coffee in town!",
+  };
 
   return (
     <div>
