@@ -1,3 +1,5 @@
+//views/src/components/Navbar.jsx
+
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import "./Navbar.css";

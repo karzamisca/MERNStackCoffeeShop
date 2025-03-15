@@ -1,3 +1,5 @@
+//views/src/pages/Home.jsx
+
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./Home.css"; // Import the CSS file
