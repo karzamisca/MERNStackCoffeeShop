@@ -111,6 +111,12 @@
   font-weight: 600;
 }
 
+.product-quantity {
+  font-size: 1.1rem;
+  color: #c7a17a;
+  font-weight: 600;
+}
+
 .add-to-cart-btn {
   background-color: #c7a17a;
   color: white;

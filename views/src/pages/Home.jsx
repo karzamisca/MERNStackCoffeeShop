@@ -98,7 +98,10 @@ function Home() {
                   <p className="product-description">{item.description}</p>
                 )}
                 <div className="product-footer">
-                  <span className="product-price">${item.price}</span>
+                  <span className="product-price">Price: ${item.price}</span>
+                  <span className="product-quantity">
+                    Quantity: {item.quantity}
+                  </span>
                   <button className="add-to-cart-btn">Add to Cart</button>
                 </div>
               </div>
