@@ -7,10 +7,6 @@ function Home() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Placeholder as data URL to comply with CSP "img-src 'self' data:"
-  const placeholderImage =
-    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect width='300' height='200' fill='%23f8f8f8'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='16' text-anchor='middle' fill='%23888888'%3ECoffee Product%3C/text%3E%3C/svg%3E";
-
   useEffect(() => {
     setLoading(true);
     axios
@@ -34,22 +30,31 @@ function Home() {
       });
   }, []);
 
-  // Function to process image URLs to use our proxy
-  const getProxiedImageUrl = (url) => {
-    if (!url) return placeholderImage;
-
-    // Use as-is if it's a relative URL (from your own domain)
-    if (url.startsWith("/")) {
-      return url;
+  // Helper function to ensure Imgur images load correctly
+  const getImageUrl = (imgurLink) => {
+    // Check if it's already a direct image link
+    if (
+      imgurLink.includes(".jpg") ||
+      imgurLink.includes(".png") ||
+      imgurLink.includes(".gif")
+    ) {
+      return imgurLink;
     }
 
-    // Use as-is if it's a data URL
-    if (url.startsWith("data:")) {
-      return url;
+    // Normalize imgur links to ensure proper loading
+    if (imgurLink.includes("imgur.com")) {
+      // Extract the image ID
+      const matches = imgurLink.match(
+        /imgur\.com\/(?:a\/|gallery\/)?([a-zA-Z0-9]+)/
+      );
+      if (matches && matches[1]) {
+        // Convert to direct image link if it's not already
+        return `https://i.imgur.com/${matches[1]}.jpg`;
+      }
     }
 
-    // For external URLs (like imgur), use our proxy
-    return `/api/images/proxy?url=${encodeURIComponent(url)}`;
+    // Return original if we can't process it
+    return imgurLink;
   };
 
   return (
@@ -72,16 +77,16 @@ function Home() {
 
         <div className="product-grid">
           {products.map((item) => (
-            <div className="product-card" key={item.id || item._id}>
+            <div className="product-card" key={item.id}>
               <div className="product-image-container">
                 <img
-                  src={getProxiedImageUrl(item.image)}
+                  src={getImageUrl(item.image)}
                   alt={item.name}
                   className="product-image"
                   onError={(e) => {
-                    console.log(`Image failed to load: ${item.image}`);
                     e.target.onerror = null;
-                    e.target.src = placeholderImage;
+                    e.target.src =
+                      "https://via.placeholder.com/300x200?text=Coffee+Product";
                   }}
                 />
               </div>

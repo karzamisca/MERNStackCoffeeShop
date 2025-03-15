@@ -7,7 +7,6 @@ require("dotenv").config();
 
 // Import Routes
 const homeRoutes = require("./routes/homeRoutes");
-const imageRoutes = require("./routes/imageRoutes");
 
 const app = express();
 
@@ -24,14 +23,13 @@ app.use(cookieParser()); // Use cookie-parser to parse cookies
 app.use((req, res, next) => {
   res.setHeader(
     "Content-Security-Policy",
-    "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;"
+    "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.imgur.com;"
   );
   next();
 });
 
 // API Routes - these need to come BEFORE the wildcard route
 app.use("/api/home", homeRoutes);
-app.use("/api/images", imageRoutes);
 
 // Serve frontend for all other routes - this should come AFTER API routes
 app.use(express.static(path.join(__dirname, "views/build")));
