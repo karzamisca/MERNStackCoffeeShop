@@ -6,7 +6,7 @@ import "./About.css"; // We'll create this CSS file next
 function About() {
   // Expanded data with more information
   const info = {
-    name: "Kylong Coffee",
+    name: "Something Coffee",
     description: "The best coffee in town!",
     founded: "2018",
     mission:
@@ -45,10 +45,10 @@ function About() {
       <div className="about-section">
         <h2>Our Story</h2>
         <p>
-          Founded in {info.founded}, Kylong Coffee began as a small cart in the
-          local farmers' market. Our commitment to quality and community quickly
-          earned us a loyal following, allowing us to grow into the beloved
-          coffeehouse we are today.
+          Founded in {info.founded}, Something Coffee began as a small cart in
+          the local farmers' market. Our commitment to quality and community
+          quickly earned us a loyal following, allowing us to grow into the
+          beloved coffeehouse we are today.
         </p>
       </div>
 
@@ -91,7 +91,7 @@ function About() {
         <h2>Visit Us</h2>
         <p>
           We're located in the heart of downtown at 123 Coffee Street. Come join
-          us for a cup of our signature brew and experience the Kylong
+          us for a cup of our signature brew and experience the Something
           difference!
         </p>
         <div className="hours">

@@ -7,16 +7,16 @@ function Contact() {
   // Directly embed the contact data instead of fetching from API
   const contact = {
     phone: "+123456789",
-    email: "contact@kylongcoffee.com",
+    email: "contact@Somethingcoffee.com",
     address: "123 Coffee Street, Bean City, BC 90210",
     hours: {
       weekdays: "7:00 AM - 8:00 PM",
       weekends: "8:00 AM - 9:00 PM",
     },
     socialMedia: {
-      instagram: "@kylongcoffee",
-      facebook: "facebook.com/kylongcoffee",
-      twitter: "@kylongcoffee",
+      instagram: "@Somethingcoffee",
+      facebook: "facebook.com/Somethingcoffee",
+      twitter: "@Somethingcoffee",
     },
   };
 
